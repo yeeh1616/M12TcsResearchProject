@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Gallery Post Format - Philosophy</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../../static/home/css/base.css">
+    <link rel="stylesheet" href="../../static/home/css/vendor.css">
+    <link rel="stylesheet" href="../../static/home/css/main.css">
+    <link rel="stylesheet" href="../../static/home/css/news.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../../static/home/js/modernizr.js"></script>
+    <script src="../../static/home/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../static/home/ut.png" type="image/png">
+    <link rel="icon" href="../static/home/ut.png" type="image/png">
+
+</head>
+
+<body id="top">
+
+     <!-- pageheader
+    ================================================== -->
+    <section class="s-pageheader s-pageheader--home">
+
+        <header class="header">
+            <div class="header__content row">
+
+                <div class="header__logo">
+                    <a class="logo" href="#">
+                        <img src="../static/home/images/modulelogo.svg" alt="Homepage">
+                    </a>
+                </div> <!-- end header__logo -->
+                <!-- end header__social -->
+
+{#				{% if title == 2 %}#}
+{#                    <a href="../notification/request_page" class="student_request">#}
+<!--                          <span class="badge">{{ notification_num }}</span>-->
+{#                    </a>#}
+{#                {% endif %}#}
+
+
+
+                <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+
+                <nav class="header__nav-wrap">
+
+                    <h2 class="header__nav-heading h6">Site Navigation</h2>
+
+                    <ul class="header__nav">
+                        <li><a href="/training" title="">Training</a></li>
+{#                        <li><a href="{{url_for('namelist.nameli')}}" title="">House</a></li>#}
+{#                        <li><a href="../chat/chat_page">Chat</a></li>#}
+{#                        <li><a href="{{url_for('auth.logout')}}" title="">Logout</a></li>#}
+                    </ul> <!-- end header__nav -->
+
+                    <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+                </nav> <!-- end header__nav-wrap -->
+
+            </div> <!-- header-content -->
+        </header> <!-- header -->
+	</section> <!-- end s-pageheader -->
+
+
+	<section id="styles" class="s-content s-content--narrow s-content--no-padding-bottom">
+{#    <form action="#" method = "get">#}
+{#        <input type="text" placeholder="Search.." name="search" autofocus>#}
+{#        <button type="submit">Search</button>#}
+{#    </form>#}
+		<div class="row add-bottom">
+			<div class="col-twelve">
+				<div class="md-full end s-footer__subscribe">
+					<div class="subscribe-form">
+						<form id="searc" class="group" novalidate="true" >
+
+                            <input type="search" value="" name="search" class="email" id="mc-email" placeholder="Key words" required="">
+
+                            <input type="submit" name="subscribe" value="search" style="margin: 0;">
+
+                        </form>
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table>
+						<thead>
+                            <th>id</th>
+                            <th>Abstract</th>
+                            <th>Score</th>
+{#                            <th>Owner</th>#}
+{#                            <th colspan="2"> Options</th>#}
+
+						</thead>
+                        <tbody>
+                            {% for doc in doc_list %}
+                                <tr>
+                                    <td>{{ loop.index + pagination.skip }}</td>
+                                    <td><a href="{{ doc.url }}" title="">{{ doc.abstract }}</a></td>
+                                    <td>{{ doc.score }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+                <div class="col-full">
+                    <nav class="pgn">
+                            {{ pagination.links }}
+                    </nav>search
+                </div>
+            </div>
+
+	</section>
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="../../static/home/js/jquery-3.2.1.min.js"></script>
+    <script src="../../static/home/js/plugins.js"></script>
+    <script src="../../static/home/js/main.js"></script>
+
+</body>
+
+</html>

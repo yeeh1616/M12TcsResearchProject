@@ -41,6 +41,10 @@ def create_app(test_config=None):
     app.register_blueprint(chat.bp, url_prefix='/chat')
     from . import module_info
     app.register_blueprint(module_info.bp, url_prefix='/module')
+    from . import searching
+    app.register_blueprint(searching.bp)
+    from . import training
+    app.register_blueprint(training.bp)
     from app.models import db
     migrate = Migrate(app, db, render_as_batch=True)
 

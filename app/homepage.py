@@ -33,7 +33,6 @@ def test2():
     return "Hello, test!"
 
 
-@bp.route('/')
 @bp.route('/home')
 @login_required
 @check_confirmed

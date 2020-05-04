@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Gallery Post Format - Philosophy</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="../../static/home/css/base.css">
+    <link rel="stylesheet" href="../../static/home/css/vendor.css">
+    <link rel="stylesheet" href="../../static/home/css/main.css">
+    <link rel="stylesheet" href="../../static/home/css/news.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="../../static/home/js/modernizr.js"></script>
+    <script src="../../static/home/js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="../static/home/ut.png" type="image/png">
+    <link rel="icon" href="../static/home/ut.png" type="image/png">
+
+</head>
+
+<body id="top">
+
+     <!-- pageheader
+    ================================================== -->
+    <section class="s-pageheader s-pageheader--home">
+
+        <header class="header">
+            <div class="header__content row">
+
+                <div class="header__logo">
+                    <a class="logo" href="#">
+                        <img src="../static/home/images/modulelogo.svg" alt="Homepage">
+                    </a>
+                </div>
+
+
+
+                <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+
+                <nav class="header__nav-wrap">
+
+                    <h2 class="header__nav-heading h6">Site Navigation</h2>
+
+                    <ul class="header__nav">
+                        <li><a href="/searching" title="">Searching</a></li>
+{#                        <li><a href="{{url_for('namelist.nameli')}}" title="">House</a></li>#}
+{#                        <li><a href="../chat/chat_page">Chat</a></li>#}
+{#                        <li><a href="{{url_for('auth.logout')}}" title="">Logout</a></li>#}
+                    </ul> <!-- end header__nav -->
+
+                    <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+                </nav> <!-- end header__nav-wrap -->
+
+            </div> <!-- header-content -->
+        </header> <!-- header -->
+	</section> <!-- end s-pageheader -->
+
+
+	<section id="styles" class="s-content s-content--narrow s-content--no-padding-bottom">
+		<div class="row add-bottom">
+			<div class="col-twelve">
+                <div class="table-responsive">
+                     <table>
+						<thead>
+                            <th>Model</th>
+                            <th>Timing</th>
+                            <th>Status</th>
+                            <th>Operation</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Word2vec</td>
+                                <td><p id="timer01">--</p></td>
+                                <td><p id="status01">Trained</p></td>
+                                <td><a id="word2vec" class="btn btn--stroke full-width" style="margin-bottom: 0rem" href="javascript:" onclick="model_word2vec()">Start</a></td>
+                            </tr>
+                            <tr>
+                                <td>Doc2vec</td>
+                                <td><p id="timer02">--</p></td>
+                                <td><p id="status02">Trained</p></td>
+                                <td><a id="word2vec" class="btn btn--stroke full-width" style="margin-bottom: 0rem" href="javascript:" onclick="model_doc2vec()">Start</a></td>
+                            </tr>
+                            <tr>
+                                <td>Glove</td>
+                                <td></td>
+                                <td><p id="status03">Not exist</p></td>
+                                <td><a class="btn btn--stroke full-width" style="margin-bottom: 0rem" href="">Start</a></td>
+                            </tr>
+                            <tr>
+                                <td>Fasttext</td>
+                                <td></td>
+                                <td><p id="status04">Not exist</p></td>
+                                <td><a class="btn btn--stroke full-width" style="margin-bottom: 0rem" href="">Start</a></td>
+                            </tr>
+                        </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="../../static/home/js/jquery-3.2.1.min.js"></script>
+    <script src="../../static/home/js/plugins.js"></script>
+    <script src="../../static/home/js/main.js"></script>
+    <script>
+        let myTimer;
+        function model_word2vec(){
+            $.ajax({
+                url:"/word2vec",
+                async:true,
+                beforeSend: function(){
+                    clock('1');
+                    document.getElementById("status01").innerHTML = 'Processing';
+                },
+                success:function(result){
+                    clearInterval(myTimer);
+                    document.getElementById("status01").innerHTML = 'Complete';
+            }});
+        }
+        function model_doc2vec(){
+            $.ajax({
+                url:"/doc2vec",
+                async:true,
+                beforeSend: function(){
+                    clock('2');
+                    document.getElementById("status02").innerHTML = 'Processing';
+                },
+                success:function(result){
+                    clearInterval(myTimer);
+                    document.getElementById("status02").innerHTML = 'Complete';
+            }});
+        }
+
+        function clock(id) {
+            let c = 0;
+            timer_id = "timer0"+id;
+            document.getElementById(timer_id).innerHTML = c++ + 's';
+            myTimer = setInterval(myClock, 1000);
+
+            function myClock() {
+                document.getElementById(timer_id).innerHTML = c++ + 's';
+            }
+        }
+    </script>
+</body>
+
+</html>
