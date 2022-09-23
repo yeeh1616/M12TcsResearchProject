@@ -58,7 +58,7 @@ opt-einsum==3.1.0
 pandas==1.0.3
 pandocfilters==1.4.2
 pipenv==2018.11.26
-protobuf==3.10.0
+protobuf==3.18.3
 psycopg2==2.8.5
 Pygments==2.4.2
 pyparsing==2.4.2
